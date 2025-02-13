@@ -1,14 +1,26 @@
+'''
+NAME: SIRI HEGDE
+HOMEWORK-2 COMP512
+
+Question-1 statement:
+Write code to create a program of parent and child thread. The parent will send a message "COMP 512 pipe programming parent" via a pipe 
+to the child, then the child changes the case of each character and adds "CHILD" to the end of the message and send it back to the parent 
+via a pipe. The parent thread will then print the message receipt from the child. 
+'''
+
 import java.io.*;
 
 class PipeCommunication{
     public static void main(String[] args){
         try{
+            //Piped streams facilitating inter-thread communication:
             final PipedOutputStream parentOut = new PipedOutputStream();
             final PipedInputStream childIn = new PipedInputStream(parentOut);
 
             final PipedOutputStream childOut = new PipedOutputStream();
             final PipedInputStream parentIn = new PipedInputStream(childOut);
 
+            //The parent thread sends a message to the child thread and receives the modified response:
             Thread parentThread = new Thread(() -> {
                 try{
                     String message = "COMP 512 pipe programming parent";
@@ -24,6 +36,7 @@ class PipeCommunication{
                 }
             });
 
+            //The child thread reads the message from the parent, modifies it and sends it back:
             Thread childThread = new Thread(() -> {
                 try{
                     byte[] buffer = new byte[1024];
@@ -41,6 +54,7 @@ class PipeCommunication{
             parentThread.start();
             childThread.start();
 
+            //Ensures both threads complete execution before the main program exits:
             parentThread.join();
             childThread.join();
         } catch (IOException | InterruptedException e){
@@ -48,6 +62,7 @@ class PipeCommunication{
         }
     }
 
+    //Method to chnage the case of each character and append "CHILD" to the message:
     private static String modifyMessage(String message) {
         StringBuilder modified = new StringBuilder();
         for (char c : message.toCharArray()) {
