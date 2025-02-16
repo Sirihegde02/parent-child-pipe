@@ -5,12 +5,7 @@ This Java program demonstrates inter-thread communication using pipes. The paren
 ## How to Run the Program
 
 ### **Prerequisites**
-- Ensure you have **Java JDK** installed on your system. You can check your installation with:
-  ```sh
-  java -version
-  javac -version
-  ```
-  If Java is not installed, download it from [Oracle JDK](https://www.oracle.com/java/technologies/javase-downloads.html) or use OpenJDK.
+- Ensure you have **Java JDK** installed on your system.
 
 ### **Steps to Run**
 

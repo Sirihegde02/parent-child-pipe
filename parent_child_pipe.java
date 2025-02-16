@@ -1,13 +1,3 @@
-'''
-NAME: SIRI HEGDE
-HOMEWORK-2 COMP512
-
-Question-1 statement:
-Write code to create a program of parent and child thread. The parent will send a message "COMP 512 pipe programming parent" via a pipe 
-to the child, then the child changes the case of each character and adds "CHILD" to the end of the message and send it back to the parent 
-via a pipe. The parent thread will then print the message receipt from the child. 
-'''
-
 import java.io.*;
 
 class PipeCommunication{
